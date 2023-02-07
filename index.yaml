@@ -1,0 +1,8 @@
+name: gitops-mas-cp4d
+type: gitops
+description: Module to populate a gitops repo with the resources to provision mas-cp4d
+tags:
+  - tools
+  - gitops
+versions: []
+id: github.com/cloud-native-toolkit/terraform-gitops-mas-cp4d
