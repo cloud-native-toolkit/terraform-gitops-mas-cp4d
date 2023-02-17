@@ -75,6 +75,11 @@ variable "server_name" {
   default     = "default"
 }
 
+variable "core_namespace" {
+  type        = string
+  description = "The namespace where MAS Core has been installed"
+}
+
 variable "ibm_entitlement_secret" {
   type        = string
   description = "The name of the secret where the entitlement key has been stored"

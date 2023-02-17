@@ -70,8 +70,19 @@ variable "git_username" {
 }
 
 variable "kubeseal_namespace" {
-  default = "sealed-secrets"
+  default = "sealed-secret"
 }
 
 variable "cp_entitlement_key" {
+}
+
+variable "ibmcloud_api_key" {
+  type        = string
+  description = "The api key for IBM Cloud access"
+}
+
+variable "osdSize" {
+  description = "Size of your storage devices. The total storage capacity of your ODF cluster is equivalent to the osdSize x 3 divided by the numOfOsd."
+  type = string
+  default = "250Gi"
 }

@@ -38,10 +38,6 @@ versions:
         moduleRef:
           id: gitops
           output: server_name
-      - name: namespace
-        moduleRef:
-          id: namespace
-          output: name
       - name: kubeseal_cert
         moduleRef:
           id: gitops
@@ -50,6 +46,10 @@ versions:
         moduleRef:
           id: mas-core
           output: entitlement_secret_name
+      - name: core_namespace
+        moduleRef:
+          id: mas-core
+          output: namespace
       - name: mas_instance_id
         moduleRef:
           id: mas-core
@@ -60,5 +60,5 @@ versions:
           output: rwx_storage_class
       - name: cpd_metadata_storage_class
         moduleRef:
-          id: mas-core
+          id: storage
           output: rwo_storage_class
