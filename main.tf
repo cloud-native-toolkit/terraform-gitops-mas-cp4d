@@ -1,13 +1,28 @@
 locals {
-  name          = "my-module"
+  name          = "mas-cp4d"
   yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
-  service_url   = "http://${local.name}.${var.namespace}"
+
   values_content = {
+    ibm_entitlement_secret =  var.ibm_entitlement_secret
+    mas_instance_id = var.mas_instance_id
+    cpd_primary_storage_class = var.cpd_primary_storage_class
+    cpd_metadata_storage_class = var.cpd_metadata_storage_class
+
+    cpd_product_version = var.cpd_product_version
+    cpd_instance_namespace = var.cpd_instance_namespace
+
+    install_cp4d_platform = var.install_cp4d_platform
+    install_watson_studio = var.install_watson_studio
+    install_watson_machine_learning = var.install_watson_machine_learning
+    install_analytics_engine = var.install_analytics_engine
+    install_watson_openscale = var.install_watson_openscale
+    install_watson_discovery = var.install_watson_discovery
   }
+
   layer = "services"
-  type  = "base"
+  type  = "instances"
   application_branch = "main"
-  namespace = var.namespace
+  namespace = "masauto-operator-system"
   layer_config = var.gitops_config[local.layer]
 }
 
@@ -25,7 +40,7 @@ resource gitops_module module {
   depends_on = [null_resource.create_yaml]
 
   name = local.name
-  namespace = var.namespace
+  namespace = local.namespace
   content_dir = local.yaml_dir
   server_name = var.server_name
   layer = local.layer

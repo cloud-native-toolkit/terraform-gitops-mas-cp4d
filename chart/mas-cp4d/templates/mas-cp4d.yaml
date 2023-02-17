@@ -1,0 +1,29 @@
+# Adds Studio to an existing MAS Core 8.9.x
+#
+# Dependencies:
+# - Core is installed
+# - CP4D Foundation is installed
+apiVersion: masauto.ibm.com/v1alpha1
+kind: CP4D
+metadata:
+  name: {{ include "mas-cp4d.name" . }}
+  namespace: masauto-operator-system
+  labels:
+    {{- include "mas-cp4d.labels" . | nindent 4 }}
+annotations:
+  ansible.operator-sdk/reconcile-period: "0s"
+spec:
+  ibm_entitlement_secret: {{ required "ibm_entitlement_secret value is required" .Values.ibm_entitlement_secret }}
+  cpd_primary_storage_class: {{ required "cpd_primary_storage_class value is required" .Values.cpd_primary_storage_class }}
+  cpd_metadata_storage_class: {{ required "cpd_metadata_storage_class value is required" .Values.cpd_metadata_storage_class }}
+  cpd_product_version: {{ .Values.cpd_product_version | default "4.5.0" }}
+  cpd_instance_namespace: {{ .Values.cpd_instance_namespace | default "ibm-cpd" }}
+  mas_instance_id: {{ required "mas_instance_id value is required" .Values.mas_instance_id }}
+
+  install_cp4d_platform: {{ .Values.install_cp4d_platform | quote }} #(~1 1/2 hours)
+  install_watson_studio: {{ .Values.install_watson_studio | quote }} #(~3 hours)
+
+  install_watson_machine_learning: {{ .Values.install_watson_machine_learning | quote }} #(~2 1/2 hours)
+  install_analytics_engine: {{ .Values.install_analytics_engine | quote }} #(~30 minutes)
+  install_watson_openscale: {{ .Values.install_watson_openscale | quote }} #(~1 hour)
+  install_watson_discovery: {{ .Values.install_watson_discovery | quote }} #(~1 hour)
