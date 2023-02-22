@@ -8,6 +8,8 @@ SOURCE_DIR=$(cd "${MODULE_DIR}/chart/mas-cp4d"; pwd -P)
 NAME="$1"
 DEST_DIR="$2"
 
+mkdir -p "${DEST_DIR}"
+
 ## Add logic here to put the yaml resource content in DEST_DIR
 cp -R "${SOURCE_DIR}"/* "${DEST_DIR}"
 
