@@ -34,3 +34,39 @@ output "type" {
   value       = local.type
   depends_on  = [gitops_module.module]
 }
+
+output "install_cp4d_platform" {
+  description = "Flag indicating that the cp4d platform should be installed"
+  depends_on  = [gitops_module.module]
+  value = var.install_cp4d_platform
+}
+
+output "install_watson_studio" {
+  description = "Flag indicating that watson studio should be installed"
+  depends_on  = [gitops_module.module]
+  value = var.install_watson_studio
+}
+
+output "install_watson_machine_learning" {
+  description = "Flag indicating that watson machine learning should be installed"
+  depends_on  = [gitops_module.module]
+  value = var.install_watson_machine_learning
+}
+
+output "install_analytics_engine" {
+  description = "Flag indicating that watson analytics engine should be installed"
+  depends_on  = [gitops_module.module]
+  value = var.install_analytics_engine
+}
+
+output "install_watson_openscale" {
+  description = "Flag indicating that watson ai should be installed"
+  depends_on  = [gitops_module.module]
+  value = var.install_watson_openscale
+}
+
+output "install_watson_discovery" {
+  description = "Flag indicating that watson discover should be installed"
+  depends_on  = [gitops_module.module]
+  value = var.install_watson_discovery
+}

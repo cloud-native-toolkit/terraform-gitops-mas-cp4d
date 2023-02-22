@@ -1,0 +1,16 @@
+digraph {
+    rankdir="BT"
+    "gitops-mas-cp4d (gitops-mas-cp4d)" -> "gitops_repo (gitops-repo)"
+"gitops-mas-cp4d (gitops-mas-cp4d)" -> "gitops-mas-core (gitops-mas-core)"
+"gitops-mas-cp4d (gitops-mas-cp4d)" -> "util-storage-class-manager (util-storage-class-manager)"
+"gitops-mas-cp4d (gitops-mas-cp4d)"
+"gitops_repo (gitops-repo)"
+"gitops-mas-core (gitops-mas-core)" -> "gitops_repo (gitops-repo)"
+"gitops-mas-core (gitops-mas-core)" -> "gitops-toolkit-catalog (gitops-toolkit-catalog)"
+"gitops-mas-core (gitops-mas-core)" -> "util-storage-class-manager (util-storage-class-manager)"
+"gitops-mas-core (gitops-mas-core)"
+"gitops-toolkit-catalog (gitops-toolkit-catalog)" -> "gitops_repo (gitops-repo)"
+"gitops-toolkit-catalog (gitops-toolkit-catalog)"
+"util-storage-class-manager (util-storage-class-manager)"
+"util-clis (util-clis)"
+  }

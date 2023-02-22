@@ -17,10 +17,14 @@ versions:
         refs:
           - source: github.com/cloud-native-toolkit/terraform-tools-gitops.git
             version: '>= 1.1.0'
-      - id: namespace
+      - id: mas-core
         refs:
-          - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
-            version: '>= 1.0.0'
+          - source: github.com/cloud-native-toolkit/terraform-gitops-mas-core.git
+            version: ">= 1.0.0"
+      - id: storage
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-storage-class-manager
+            version: ">= 1.0.0"
     variables:
       - name: gitops_config
         moduleRef:
@@ -34,11 +38,27 @@ versions:
         moduleRef:
           id: gitops
           output: server_name
-      - name: namespace
-        moduleRef:
-          id: namespace
-          output: name
       - name: kubeseal_cert
         moduleRef:
           id: gitops
           output: sealed_secrets_cert
+      - name: ibm_entitlement_secret
+        moduleRef:
+          id: mas-core
+          output: entitlement_secret_name
+      - name: core_namespace
+        moduleRef:
+          id: mas-core
+          output: namespace
+      - name: mas_instance_id
+        moduleRef:
+          id: mas-core
+          output: mas_instance_id
+      - name: cpd_primary_storage_class
+        moduleRef:
+          id: storage
+          output: rwx_storage_class
+      - name: cpd_metadata_storage_class
+        moduleRef:
+          id: storage
+          output: rwo_storage_class
