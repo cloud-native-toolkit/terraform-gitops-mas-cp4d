@@ -1,0 +1,28 @@
+apiVersion: cloudnativetoolkit.dev/v2
+kind: Solution
+metadata:
+  name: stages
+  labels:
+    type: infrastructure
+    platform: ibm
+    flavor: quickstart
+  annotations:
+    displayName: "Infrastructure: IBM Cloud Quickstart"
+    description: Provisions the Quickstart reference architecture on IBM Cloud
+    catalogUrl/localBom: './local-bom.yaml'
+    catalogUrl/localModule: '../module.yaml'
+spec:
+  version: v1.0.0
+  stack:
+    - name: 105-existing-openshift
+      layer: infrastructure
+      description: IBM VPC and public Red Hat OpenShift server
+    - name: 200-openshift-gitops
+      layer: platform
+      description: Provisions OpenShift GitOps into an existing IBM cluster and bootstraps it to a gitops repository
+    - name: 210-ibm-odf-storage
+      layer: storage
+      description: Installs ODF in an IBM cluster
+    - name: local-bom
+      layer: software
+      description: Provisions development tools in an OpenShift cluster

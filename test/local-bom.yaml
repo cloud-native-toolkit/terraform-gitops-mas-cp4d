@@ -1,0 +1,14 @@
+apiVersion: cloud.ibm.com/v1alpha1
+kind: BillOfMaterial
+metadata:
+  name: local-bom
+  labels:
+    type: software
+    code: '200'
+  annotations:
+    displayName: OpenShift GitOps Bootstrap
+    description: Provisions OpenShift GitOps (ArgoCD) into an existing cluster and bootstraps it to a gitops repository
+spec:
+  version: v1.0.0
+  modules:
+    - name: gitops-mas-cp4d
